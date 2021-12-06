@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="DataSource_XML">
+  <ConnectionProperties>
+    <Extension>XML</Extension>
+    <ConnectString>https://bank.gov.ua/depo_securities</ConnectString>
+    <IntegratedSecurity>true</IntegratedSecurity>
+  </ConnectionProperties>
+  <DataSourceID>bd273c7c-9412-43e9-9139-977db7c5733e</DataSourceID>
+</RptDataSource>
