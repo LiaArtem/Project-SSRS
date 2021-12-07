@@ -59,6 +59,7 @@
   <ItemGroup>
     <Report Include="Report_best_kurs.rdl" />
     <Report Include="Report_best_kurs_mysql.rdl" />
+    <Report Include="Report_best_kurs_postgre.rdl" />
     <Report Include="Report_best_kurs_sqlite.rdl" />
     <Report Include="Report_Fair.rdl" />
     <Report Include="Report_XML.rdl" />
