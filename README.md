@@ -30,6 +30,7 @@ Deployment MS SQL Server 2019 Reporting Services.
      - sqlite - http://www.ch-werner.de/sqliteodbc/  - файл sqliteodbc_w64.exe
      - postgeeSQL - https://www.postgresql.org/ftp/odbc/versions/msi/ - файл psqlodbc_13_02_0000-x64.zip
      - oracle - - https://www.oracle.com/database/technologies/oracle21c-windows-downloads.html - файл NT_213000_client_x64.zip
+        (!!!! одновременно два клиента работать не будут, удалить клиента x86)
         - после установки меняем в глоб. реестре:
         - Компьютер\HKEY_LOCAL_MACHINE\SOFTWARE\ORACLE\KEY_OraClient21Home1 c AMERICAN_AMERICA.WE8MSWIN1252
           на NLS_LANG = AMERICAN_AMERICA.AL32UTF8 (либо AMERICAN_AMERICA.CL8MSWIN1251)
