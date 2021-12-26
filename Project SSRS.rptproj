@@ -4,15 +4,15 @@
     <FullPath>Debug</FullPath>
     <OutputPath>bin\Debug</OutputPath>
     <ErrorLevel>2</ErrorLevel>
-    <OverwriteDatasets>False</OverwriteDatasets>
-    <OverwriteDataSources>False</OverwriteDataSources>
+    <OverwriteDatasets>True</OverwriteDatasets>
+    <OverwriteDataSources>True</OverwriteDataSources>
     <TargetServerVersion>SSRS2016</TargetServerVersion>
     <Platform>Win32</Platform>
     <TargetReportFolder>Project SSRS</TargetReportFolder>
     <TargetDatasetFolder>Наборы данных</TargetDatasetFolder>
     <TargetDatasourceFolder>Источники данных</TargetDatasourceFolder>
     <TargetReportPartFolder>Элементы отчета</TargetReportPartFolder>
-    <TargetServerURL>http://localhost/reportserver</TargetServerURL>
+    <TargetServerURL>http://localhost/ReportServer2019</TargetServerURL>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'DebugLocal' ">
     <FullPath>DebugLocal</FullPath>
@@ -57,12 +57,12 @@
     <DataSource Include="DataSource_XML.rds" />
   </ItemGroup>
   <ItemGroup>
-    <Report Include="Report_best_kurs.rdl" />
+    <Report Include="Report_best_kurs_mssql.rdl" />
     <Report Include="Report_best_kurs_mysql.rdl" />
     <Report Include="Report_best_kurs_oracle.rdl" />
     <Report Include="Report_best_kurs_postgre.rdl" />
     <Report Include="Report_best_kurs_sqlite.rdl" />
-    <Report Include="Report_Fair.rdl" />
+    <Report Include="Report_Fair_mssql.rdl" />
     <Report Include="Report_XML.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />

@@ -6,9 +6,10 @@
     <DataSource Name="DataSource_PostgreSQL">
       <ConnectionProperties>
         <DataProvider>ODBC</DataProvider>
-        <ConnectString>Driver=PostgreSQL ANSI;server=localhost;port=5432;database=test_database</ConnectString>
+        <ConnectString>Driver=PostgreSQL ANSI;server=localhost;port=5432;database=test_database;Uid=test_user;Pwd=12345678;</ConnectString>
+        <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
-      <rd:SecurityType>DataBase</rd:SecurityType>
+      <rd:SecurityType>Integrated</rd:SecurityType>
       <rd:DataSourceID>ef8f5362-9cfd-4d0a-a184-c265fbe0dd2e</rd:DataSourceID>
     </DataSource>
   </DataSources>
@@ -515,7 +516,7 @@ from test_schemas.view_kurs_report</CommandText>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Курсы</Value>
+                      <Value>Курсы PostgreSQL</Value>
                       <Style>
                         <FontSize>36pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -530,7 +531,7 @@ from test_schemas.view_kurs_report</CommandText>
               <Top>1.01265cm</Top>
               <Left>0.44129cm</Left>
               <Height>2.21396cm</Height>
-              <Width>8.10917cm</Width>
+              <Width>15.93541cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>

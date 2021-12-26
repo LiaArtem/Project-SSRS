@@ -3,7 +3,7 @@
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
   <DataSets>
-    <DataSet Name="DataSet_fair">
+    <DataSet Name="DataSet_XML">
       <SharedDataSet>
         <SharedDataSetReference>DataSet_XML</SharedDataSetReference>
       </SharedDataSet>
@@ -1070,11 +1070,11 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>DataSet_fair</DataSetName>
+            <DataSetName>DataSet_XML</DataSetName>
             <Top>0.3937cm</Top>
             <Left>0.34078cm</Left>
             <Height>1.62333cm</Height>
-            <Width>27.23604cm</Width>
+            <Width>27.23603cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>

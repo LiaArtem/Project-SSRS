@@ -6,7 +6,7 @@
     <DataSource Name="DataSource_Oracle">
       <ConnectionProperties>
         <DataProvider>OLEDB</DataProvider>
-        <ConnectString>Provider=OraOLEDB.Oracle.1;Data Source=XE</ConnectString>
+        <ConnectString>Provider=OraOLEDB.Oracle;Data Source=XE</ConnectString>
       </ConnectionProperties>
       <rd:SecurityType>DataBase</rd:SecurityType>
       <rd:DataSourceID>f0c525fe-803d-4aeb-88c2-6cdac41eb378</rd:DataSourceID>
@@ -500,7 +500,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Курсы</Value>
+                      <Value>Курсы Oracle</Value>
                       <Style>
                         <FontSize>36pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -515,7 +515,7 @@
               <Top>0.36911cm</Top>
               <Left>0.41483cm</Left>
               <Height>2.21396cm</Height>
-              <Width>8.10917cm</Width>
+              <Width>16.80853cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>

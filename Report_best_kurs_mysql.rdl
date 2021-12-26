@@ -516,7 +516,7 @@ FROM test_schemas.curs_report;</CommandText>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Курсы</Value>
+                      <Value>Курсы MySQL</Value>
                       <Style>
                         <FontSize>36pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -531,7 +531,7 @@ FROM test_schemas.curs_report;</CommandText>
               <Top>0.34265cm</Top>
               <Left>0.57563cm</Left>
               <Height>2.21396cm</Height>
-              <Width>8.10917cm</Width>
+              <Width>15.57042cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>

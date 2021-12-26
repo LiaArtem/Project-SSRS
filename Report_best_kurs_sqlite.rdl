@@ -6,9 +6,10 @@
     <DataSource Name="DataSource_SQLite">
       <ConnectionProperties>
         <DataProvider>ODBC</DataProvider>
-        <ConnectString>Driver=SQLite3 ODBC Driver;database=d:\Прочие\Project\Project SSRS\CurrencyChartFXMaven.db;longnames=0;timeout=1000;notxn=0;syncpragma=NORMAL;stepapi=0</ConnectString>
+        <ConnectString>Driver=SQLite3 ODBC Driver;database=C:\DB_SQLite\CurrencyChartFXMaven.db;longnames=0;timeout=1000;notxn=0;syncpragma=NORMAL;stepapi=0</ConnectString>
+        <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
-      <rd:SecurityType>None</rd:SecurityType>
+      <rd:SecurityType>Integrated</rd:SecurityType>
       <rd:DataSourceID>e270aa95-a46c-4679-9146-baffeb33e239</rd:DataSourceID>
     </DataSource>
   </DataSources>
@@ -515,7 +516,7 @@ from CURS_REPORT</CommandText>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Курсы</Value>
+                      <Value>Курсы SQLite</Value>
                       <Style>
                         <FontSize>36pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -528,9 +529,9 @@ from CURS_REPORT</CommandText>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
               <Top>0.66869cm</Top>
-              <Left>2.84899cm</Left>
+              <Left>0.46774cm</Left>
               <Height>2.21396cm</Height>
-              <Width>8.10917cm</Width>
+              <Width>15.27938cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
