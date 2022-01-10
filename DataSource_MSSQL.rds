@@ -2,7 +2,7 @@
 <RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="DataSource_MSSQL">
   <ConnectionProperties>
     <Extension>SQL</Extension>
-    <ConnectString>Data Source=DESKTOP-PNF3PJH;Initial Catalog=DatabaseTestDB</ConnectString>
+    <ConnectString>Data Source=localhost;Initial Catalog=DatabaseTestDB</ConnectString>
     <IntegratedSecurity>true</IntegratedSecurity>
   </ConnectionProperties>
   <DataSourceID>419f25db-8d48-4f74-a98c-6c86f0a4439a</DataSourceID>

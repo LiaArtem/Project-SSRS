@@ -7,7 +7,7 @@
     <DataSource Name="DataSource_MSSQL">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=DESKTOP-PNF3PJH;Initial Catalog=DatabaseTestDB</ConnectString>
+        <ConnectString>Data Source=localhost;Initial Catalog=DatabaseTestDB</ConnectString>
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
       <rd:SecurityType>Integrated</rd:SecurityType>
