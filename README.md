@@ -1,4 +1,4 @@
-- Project SSRS VS2022 (Reports with MS SQL 2019, OracleXE 21c, PostgreSQL 14, SQLite, MySQL, XML).
+- Project SSRS VS2022 (Reports with Azure SQL, MS SQL 2019, OracleXE 21c, PostgreSQL 14, SQLite, MySQL, XML).
 Deployment MS SQL Server 2019 Reporting Services.
 
 ----------------------------------------------------------------------------
