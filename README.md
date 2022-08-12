@@ -1,4 +1,4 @@
-- Project SSRS VS2022 (Reports with Azure SQL, MS SQL 2019, OracleXE 21c, PostgreSQL 14, SQLite, MySQL, XML).
+- Project SSRS VS2022 (Reports with Oracle, MS SQL, Azure SQL, PostgreSQL, MySQL, IBM DB2, SQLite, XML).
 Deployment MS SQL Server 2019 Reporting Services.
 
 ----------------------------------------------------------------------------
@@ -110,3 +110,10 @@ Visual Studio 2022 - настройки ODBC при разработке
 - настраиваем OLE DB подключение в SSRS
   - поставщик OLE DB: Oracle provider for OLE DB
   - имя базы = XE, логин = TEST_USER и пароль = TEST_USER.
+
+-> IBM DB2 OLE DB Driver
+------------------------------------------------------
+- OLE DB устанавливается вместе с базой данных
+- настраиваем OLE DB подключение в SSRS
+  - поставщик OLE DB: Provider=IBMOLEDB.DB2COPY1;Data Source=SAMPLE;Location=localhost:25000
+  - логин = db2admin и пароль = 12345678.

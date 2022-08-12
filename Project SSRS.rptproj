@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Report Include="Report_best_kurs_asure_sql.rdl" />
+    <Report Include="Report_best_kurs_ibmdb2.rdl" />
     <Report Include="Report_best_kurs_mssql.rdl" />
     <Report Include="Report_best_kurs_mysql.rdl" />
     <Report Include="Report_best_kurs_oracle.rdl" />
