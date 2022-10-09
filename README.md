@@ -1,26 +1,26 @@
-- Project SSRS VS2022 (Reports with Oracle, MS SQL, Azure SQL, PostgreSQL, MySQL, IBM DB2, SQLite, XML).
-Deployment MS SQL Server 2019 Reporting Services.
+- Project SSRS VS2022 (Reports with Oracle, MS SQL, Azure SQL, PostgreSQL, MySQL, IBM DB2, IBM Informix, Firebird, SQLite, XML).
+Deployment MS SQL Server 2022 Reporting Services.
 
 ----------------------------------------------------------------------------
-Настройка Microsoft SQL Server 2019 Reporting Services
+Настройка Microsoft SQL Server 2022 Reporting Services
 ----------------------------------------------------------------------------
-1) Установили Microsoft SQL Server 2019 Reporting Services
-   https://www.microsoft.com/ru-RU/download/confirmation.aspx?id=100122 - SQLServerReportingServices.exe
+1) Установили Microsoft SQL Server 2022 Reporting Services
+   https://www.microsoft.com/ru-RU/download/details.aspx?id=104502 - SQLServerReportingServices.exe
 2) Запустили Report Server Configuration Manager
    - Соединились
    - Учетная запись службы -> выбираем Сетевая служба и жмем применить
-   - URL-адрес веб-службы -> Виртуальный каталог - ReportServer2019 и жмем применить. (URL - http://localhost:80/ReportServer2019)
+   - URL-адрес веб-службы -> Виртуальный каталог - ReportServer2022 и жмем применить. (URL - http://localhost:80/ReportServer2022)
    - База данных -> Изменить базу данных -> Создать новую базу данных отчетов
-   - URL-адрес веб-портала -> Виртуальный каталог - Reports2019 и жмем применить. (URL - http://localhost:80/Reports2019)
+   - URL-адрес веб-портала -> Виртуальный каталог - Reports2022 и жмем применить. (URL - http://localhost:80/Reports2022)
    - Настройки электронной почты - настраиваем если нужно.
    - Выходим
 
- 3) Добавляем уже созданные отчеты (Google Chrome - http://localhost:80/Reports2019)
-   - Устанавливаем ReportBuilder (если хотим менять в веб-версии)
-     https://www.microsoft.com/ru-ru/download/details.aspx?id=53613устанавливыаем - ReportBuilder.msi
+ 3) Добавляем уже созданные отчеты (Google Chrome - http://localhost:80/Reports2022)
+   - Устанавливаем ReportBuilder (если хотим менять в отчетах в веб-версии)
+     https://www.microsoft.com/ru-ru/download/details.aspx?id=53613 - устанавливаем - ReportBuilder.msi
    - взять готовые отчеты из проекта - Project SSRS
      - в проекте VS прописать Свойства проекта
-       -> TargetServerUrl = http://localhost:80/ReportServer2019
+       -> TargetServerUrl = http://localhost:80/ReportServer2022
        -> OverwriteDatasets = true
        -> OverwriteDatasources = true
      - Пуск проекта Project SSRS. Все автоматически уйдет на сервер.
@@ -38,7 +38,7 @@ Deployment MS SQL Server 2019 Reporting Services.
   6) Перезагружаем сервер (ПК)
 
 ----------------------------------------------------------------------------
-Настройка HTTPS в Microsoft SQL Server 2019 Reporting Services
+Настройка HTTPS в Microsoft SQL Server 2022 Reporting Services
 ----------------------------------------------------------------------------
 1) Добавляем IIS Management Console (Диспетчер служб IIS) если ее нет.
    Клавиша Windows -> пишем "Включение и отключение компонентов Windows" -> Службы IIS -> Средства управления веб-сайтом (все включить)
@@ -59,10 +59,10 @@ Deployment MS SQL Server 2019 Reporting Services.
      - Страна - (например - UA)
    - Далее - Локальный центр сертификации и вводим понятное имя.
 3) Запускаем Report Server Configuration Manager
-   - URL адрес веб-службы - выбираем HTTPS-сертификат (https://desktop-kq2l9b1/ReportServer2019)
+   - URL адрес веб-службы - выбираем HTTPS-сертификат (https://desktop-kq2l9b1/ReportServer2022)
      Применить.
    - URL адрес веб-портала - Долполнительно - Насколько HTTPS удостоверений для выбранного сейчас компонента Reporting Services
-     Добавить, выбрать сертификат - ОК - ОК (https://desktop-kq2l9b1/Reports2019)
+     Добавить, выбрать сертификат - ОК - ОК (https://desktop-kq2l9b1/Reports2022)
 
 ----------------------------------------------------------------------------
 Visual Studio 2022 - настройки ODBC при разработке
@@ -117,3 +117,22 @@ Visual Studio 2022 - настройки ODBC при разработке
 - настраиваем OLE DB подключение в SSRS
   - поставщик OLE DB: Provider=IBMOLEDB.DB2COPY1;Data Source=SAMPLE;Location=localhost:25000
   - логин = db2admin и пароль = 12345678.
+
+-> IBM Informix ODBC Driver
+------------------------------------------------------
+- Скачиваем и устанавливаем IBM Informix Client SDKV 4.50 (ibm.csdk.4.50.FC8.WIN.zip)
+- Windows -> Источники данных ODBC (64 разрадная версия) -> Системный DSN
+  - General:
+    - Data Source Name - informix_odbc
+    - Description - informix_odbc
+  - Connection:
+    - Server Name - informix_test
+    - Host Name - localhost
+    - Service - turbo_test
+    - Database Name - sample
+    - User Id - informix
+    - Password - 12345678
+
+-> Firebird ODBC Driver
+------------------------------------------------------
+- Скачиваем и устанавливаем Firebird_ODBC_2.0.5.156_x64.exe

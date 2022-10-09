@@ -1,41 +1,40 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="DataSourceIBMDB2">
+    <DataSource Name="DataSource_IBMInformix">
       <ConnectionProperties>
-        <DataProvider>OLEDB</DataProvider>
-        <ConnectString>Provider=IBMOLEDB.DB2COPY1;Data Source=SAMPLE;Location=localhost:25000;uid=db2admin;pwd=12345678</ConnectString>
+        <DataProvider>ODBC</DataProvider>
+        <ConnectString>Dsn=informix_odbc</ConnectString>
+        <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
-      <rd:SecurityType>DataBase</rd:SecurityType>
-      <rd:DataSourceID>b2e5e70e-e63c-41bf-b76b-8d75a7a661e2</rd:DataSourceID>
+      <rd:SecurityType>Integrated</rd:SecurityType>
+      <rd:DataSourceID>4cb6da58-0274-4719-b5ec-9137c9ad9072</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSet_kurs">
       <Query>
-        <DataSourceName>DataSourceIBMDB2</DataSourceName>
-        <CommandText>SELECT cr.*
-FROM TEST_SCHEMAS.CURS_REPORT cr
-ORDER BY 1</CommandText>
-        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <DataSourceName>DataSource_IBMInformix</DataSourceName>
+        <CommandText>select *
+from curs_report</CommandText>
       </Query>
       <Fields>
-        <Field Name="CURS_DATE">
-          <DataField>CURS_DATE</DataField>
+        <Field Name="curs_date">
+          <DataField>curs_date</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="CURR_CODE">
-          <DataField>CURR_CODE</DataField>
+        <Field Name="curr_code">
+          <DataField>curr_code</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="RATE">
-          <DataField>RATE</DataField>
+        <Field Name="rate">
+          <DataField>rate</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="AVG_RATE">
-          <DataField>AVG_RATE</DataField>
+        <Field Name="avg_rate">
+          <DataField>avg_rate</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
       </Fields>
@@ -285,16 +284,16 @@ ORDER BY 1</CommandText>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="CURS_DATE">
+                        <Textbox Name="curs_date">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!CURS_DATE.Value</Value>
+                                  <Value>=Fields!curs_date.Value</Value>
                                   <Style>
-                                    <Format>dd.MM.yyyy</Format>
+                                    <Format>d</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -303,7 +302,7 @@ ORDER BY 1</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>CURS_DATE</rd:DefaultName>
+                          <rd:DefaultName>curs_date</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -318,14 +317,14 @@ ORDER BY 1</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="CURR_CODE">
+                        <Textbox Name="curr_code">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!CURR_CODE.Value</Value>
+                                  <Value>=Fields!curr_code.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -334,7 +333,7 @@ ORDER BY 1</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>CURR_CODE</rd:DefaultName>
+                          <rd:DefaultName>curr_code</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -369,14 +368,14 @@ ORDER BY 1</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="RATE">
+                        <Textbox Name="rate">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!RATE.Value</Value>
+                                  <Value>=Fields!rate.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -385,7 +384,7 @@ ORDER BY 1</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>RATE</rd:DefaultName>
+                          <rd:DefaultName>rate</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -420,14 +419,14 @@ ORDER BY 1</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="AVG_RATE">
+                        <Textbox Name="avg_rate">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!AVG_RATE.Value</Value>
+                                  <Value>=Fields!avg_rate.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <Format>0.0000;(0.0000)</Format>
@@ -439,7 +438,7 @@ ORDER BY 1</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>AVG_RATE</rd:DefaultName>
+                          <rd:DefaultName>avg_rate</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -475,8 +474,8 @@ ORDER BY 1</CommandText>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_kurs</DataSetName>
-            <Top>0.3114cm</Top>
-            <Left>1.81302cm</Left>
+            <Top>0.39219cm</Top>
+            <Left>1.34527cm</Left>
             <Height>1.2cm</Height>
             <Width>17.4348cm</Width>
             <Style>
@@ -486,20 +485,30 @@ ORDER BY 1</CommandText>
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>3.63431in</Height>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-        </Style>
+        <Height>0.78125in</Height>
+        <Style />
       </Body>
-      <Width>8.29167in</Width>
+      <Width>7.92336in</Width>
       <Page>
         <PageHeader>
           <Height>5.68854cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
+            <Image Name="Image1">
+              <Source>Embedded</Source>
+              <Value>logo</Value>
+              <Sizing>FitProportional</Sizing>
+              <Top>0.36442cm</Top>
+              <Left>16.21763cm</Left>
+              <Height>4.9597cm</Height>
+              <Width>3.59021cm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Image>
             <Textbox Name="Textbox1">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
@@ -507,7 +516,7 @@ ORDER BY 1</CommandText>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Курсы IBM DB2</Value>
+                      <Value>Курсы IBM Informix</Value>
                       <Style>
                         <FontSize>36pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -519,10 +528,10 @@ ORDER BY 1</CommandText>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.33796cm</Top>
-              <Left>0.16348cm</Left>
+              <Top>0.36442cm</Top>
               <Height>2.21396cm</Height>
-              <Width>16.80853cm</Width>
+              <Width>15.93541cm</Width>
+              <ZIndex>1</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -533,21 +542,6 @@ ORDER BY 1</CommandText>
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
-            <Image Name="Image1">
-              <Source>Embedded</Source>
-              <Value>logo</Value>
-              <Sizing>FitProportional</Sizing>
-              <Top>0.33796cm</Top>
-              <Left>17.14839cm</Left>
-              <Height>4.9597cm</Height>
-              <Width>3.59021cm</Width>
-              <ZIndex>1</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-              </Style>
-            </Image>
             <Textbox Name="Textbox2">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
@@ -569,8 +563,8 @@ ORDER BY 1</CommandText>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>4.06266cm</Top>
-              <Left>4.23263cm</Left>
+              <Top>4.08912cm</Top>
+              <Left>3.19603cm</Left>
               <Height>1.235cm</Height>
               <Width>12.73938cm</Width>
               <ZIndex>2</ZIndex>
@@ -592,10 +586,13 @@ ORDER BY 1</CommandText>
             <BackgroundColor>Black</BackgroundColor>
           </Style>
         </PageHeader>
-        <LeftMargin>1in</LeftMargin>
-        <RightMargin>1in</RightMargin>
-        <TopMargin>1in</TopMargin>
-        <BottomMargin>1in</BottomMargin>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
+        <LeftMargin>2cm</LeftMargin>
+        <RightMargin>2cm</RightMargin>
+        <TopMargin>2cm</TopMargin>
+        <BottomMargin>2cm</BottomMargin>
+        <ColumnSpacing>0.13cm</ColumnSpacing>
         <Style />
       </Page>
     </ReportSection>
@@ -673,8 +670,6 @@ JrKk3Jau2pHTxrXyqnbVL9CsS68kpJ2f5iGV2hS5Ekuur9QkvhF42s9Ngm58puk20uXbULub8ekOSU8y
 tIzZmle3uxpe7bRtzbeazi+W3Uz6b9q2e7VlsVNfdW15aX3sWM68tZQdKs6VW6Slln9CN+rqoVqddZ1yxlr7kvmM78oqSnVqynNuUpO7lYTxCzbPRN3RpPXsi7X0voKYpUrDRMkuS1UXp1uTTVy+wpSad722VvUJMrYqrLfcrM1GlKk6rai+deGPVkt01jNq8y2dpeGwN1Vqz06FZ0i9noE3ptQxU6VTPkhUdmstSKkubcai9zG5WU2jlevN0XsFVCLRjKTtFXaTenogqoQAAAJAgABLTW4D5gQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADSioXvNuKVuZdDOVvwsdVTvp04yqVFJR5oZ5amJfLU0tDFzp0Y0oRWaXjGWEvk/dhiZt1HaSlm8WhuLbtS6WtO8Sf4kVpxnZzi7ZS2sx1fsbq4KeOVSPK8s6Xm+ZnerokYxiqyypKM4L/MXemv1KRTtO83m+FeYtqFOWWeWq5Km395l3GkMtN07pvPeyjbT8xvyold32SW/qGteUzqLwU2+7fNl/EST7s2lWMk1GbeZbx9BjfsuX7qqUY7q/uXRvSFJOTbu29kNJKtOVNWUHJp+O40ts2rZaJPXqE19l4Ol3c08zqeS2wu9rvworrVq8SpPA7NJ7NdERb6RFO91p7FqYxMXKEr7PqL5JuI6+nqEXpValNudPSSek1ugsyU993fqE/dD3KlNwiAJAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//2Q==</ImageData>
     </EmbeddedImage>
   </EmbeddedImages>
-  <Language>en-US</Language>
-  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
-  <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>c1701af2-a38c-4c4a-a1c0-5f897c4734a1</rd:ReportID>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>eb664da9-842d-4bcf-997a-b914f9788891</rd:ReportID>
 </Report>

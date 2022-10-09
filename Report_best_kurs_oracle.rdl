@@ -7,7 +7,7 @@
     <DataSource Name="DataSource_Oracle">
       <ConnectionProperties>
         <DataProvider>OLEDB</DataProvider>
-        <ConnectString>Provider=OraOLEDB.Oracle;Data Source=XE</ConnectString>
+        <ConnectString>Provider=OraOLEDB.Oracle;Data Source=XE; User Id=TEST_USER;Password=TEST_USER;</ConnectString>
       </ConnectionProperties>
       <rd:SecurityType>DataBase</rd:SecurityType>
       <rd:DataSourceID>f0c525fe-803d-4aeb-88c2-6cdac41eb378</rd:DataSourceID>

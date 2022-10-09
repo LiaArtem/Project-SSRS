@@ -12,7 +12,7 @@
     <TargetDatasetFolder>Наборы данных</TargetDatasetFolder>
     <TargetDatasourceFolder>Источники данных</TargetDatasourceFolder>
     <TargetReportPartFolder>Элементы отчета</TargetReportPartFolder>
-    <TargetServerURL>http://localhost/ReportServer2019</TargetServerURL>
+    <TargetServerURL>http://localhost/ReportServer2022</TargetServerURL>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'DebugLocal' ">
     <FullPath>DebugLocal</FullPath>
@@ -58,7 +58,9 @@
   </ItemGroup>
   <ItemGroup>
     <Report Include="Report_best_kurs_asure_sql.rdl" />
+    <Report Include="Report_best_kurs_firebird.rdl" />
     <Report Include="Report_best_kurs_ibmdb2.rdl" />
+    <Report Include="Report_best_kurs_ibminformix.rdl" />
     <Report Include="Report_best_kurs_mssql.rdl" />
     <Report Include="Report_best_kurs_mysql.rdl" />
     <Report Include="Report_best_kurs_oracle.rdl" />
