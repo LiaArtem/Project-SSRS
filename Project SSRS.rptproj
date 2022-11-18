@@ -61,6 +61,7 @@
     <Report Include="Report_best_kurs_firebird.rdl" />
     <Report Include="Report_best_kurs_ibmdb2.rdl" />
     <Report Include="Report_best_kurs_ibminformix.rdl" />
+    <Report Include="Report_best_kurs_mariadb.rdl" />
     <Report Include="Report_best_kurs_mssql.rdl" />
     <Report Include="Report_best_kurs_mysql.rdl" />
     <Report Include="Report_best_kurs_oracle.rdl" />

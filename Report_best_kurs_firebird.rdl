@@ -6,7 +6,7 @@
     <DataSource Name="DataSource_Firebird">
       <ConnectionProperties>
         <DataProvider>ODBC</DataProvider>
-        <ConnectString>Driver=Firebird/InterBase(r) driver;dbname=C:\Windows\System32\SAMPLEDATABASE.FDB</ConnectString>
+        <ConnectString>DRIVER=Firebird/InterBase(r) driver;UID=SYSDBA;PWD=!Aa112233;DBNAME=localhost/3050://firebird/data/testdb.fdb</ConnectString>
       </ConnectionProperties>
       <rd:SecurityType>DataBase</rd:SecurityType>
       <rd:DataSourceID>eb42f58d-ea10-4219-8923-7acf5f7dae34</rd:DataSourceID>

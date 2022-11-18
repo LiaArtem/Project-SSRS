@@ -1,4 +1,4 @@
-- Project SSRS VS2022 (Reports with Oracle, MS SQL, Azure SQL, PostgreSQL, MySQL, IBM DB2, IBM Informix, Firebird, SQLite, XML).
+- Project SSRS VS2022 (Reports with Oracle, MS SQL, Azure SQL, PostgreSQL, MySQL, MariaDB, IBM DB2, IBM Informix, Firebird, SQLite, XML).
 Deployment MS SQL Server 2022 Reporting Services.
 
 ----------------------------------------------------------------------------
@@ -11,6 +11,18 @@ Deployment MS SQL Server 2022 Reporting Services.
    - Учетная запись службы -> выбираем Сетевая служба и жмем применить
    - URL-адрес веб-службы -> Виртуальный каталог - ReportServer2022 и жмем применить. (URL - http://localhost:80/ReportServer2022)
    - База данных -> Изменить базу данных -> Создать новую базу данных отчетов
+     - Тип проверки подлинности: - Учетная запись SQL Server
+     - Имя пользователя: - sa
+     - Пароль: - !Aa112233
+   - База данных -> Изменить учетные данные
+     - Сервер базы данных:
+       - Тип проверки подлинности: - Учетная запись SQL Server
+       - Имя пользователя: - sa
+       - Пароль: - !Aa112233
+     - Учетные данные:
+       - Тип проверки подлинности: - Учетная запись SQL Server
+       - Имя пользователя: - sa
+       - Пароль: - !Aa112233
    - URL-адрес веб-портала -> Виртуальный каталог - Reports2022 и жмем применить. (URL - http://localhost:80/Reports2022)
    - Настройки электронной почты - настраиваем если нужно.
    - Выходим
@@ -27,14 +39,6 @@ Deployment MS SQL Server 2022 Reporting Services.
 
   4) Базу SQLite перенести - C:\\DB_SQLite\\CurrencyChartFXMaven.db
   5) Для работы сервера необходимы ODBC Drivers x64
-     - sqlite - http://www.ch-werner.de/sqliteodbc/ - файл sqliteodbc_w64.exe
-     - postgeeSQL - https://www.postgresql.org/ftp/odbc/versions/msi/ - файл psqlodbc_13_02_0000-x64.zip
-     - oracle - - https://www.oracle.com/database/technologies/oracle21c-windows-downloads.html - файл NT_213000_client_x64.zip
-        - после установки меняем в глоб. реестре:
-        - Компьютер\HKEY_LOCAL_MACHINE\SOFTWARE\ORACLE\KEY_OraClient21Home1 c AMERICAN_AMERICA.WE8MSWIN1252
-          на NLS_LANG = AMERICAN_AMERICA.AL32UTF8 (либо AMERICAN_AMERICA.CL8MSWIN1251)
-        - настраиваем tnsnames.ora для настройки x64 Oracle Client:
-          XE = (DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)))(CONNECT_DATA =(SERVICE_NAME = XE)))
   6) Перезагружаем сервер (ПК)
 
 ----------------------------------------------------------------------------
@@ -72,6 +76,11 @@ Visual Studio 2022 - настройки ODBC при разработке
 Если не появился +
  - из меню Visual Studio <Расширения> выберите <Управление расширениями> установить Microsoft Reporting Services Projects
 
+!!!! Если такая ошибка в DataSource_*** вкладка Учетные данные -> Использовать имя пользователя и пароль -> Прописать их
+The current action cannot be completed. The user data source credentials do not meet the requirements to run this report or shared dataset.
+Either the user data source credentials are not stored in the report server database, or the user data source is configured not to require credentials
+but the unattended execution account is not specified. (rsInvalidDataSourceCredentialSetting)
+
 -> XML read
 ------------------------------------------------------
 - https://bank.gov.ua/depo_securities
@@ -81,58 +90,133 @@ Visual Studio 2022 - настройки ODBC при разработке
 ------------------------------------------------------
 - http://www.ch-werner.de/sqliteodbc/
 - скачиваем и ставим sqliteodbc.exe, sqliteodbc_w64.exe
+- Запускаем -> Источники данных ODBC x64 -> Системный DSN ->  SQLite Datasource x64 -> Прописать Database Name = C:\DB_SQLite\CurrencyChartFXMaven.db
 - ODBC прописать при подключении в SSRS
 - Driver={SQLite3 ODBC Driver};database=C:\\DB_SQLite\\CurrencyChartFXMaven.db;longnames=0;timeout=1000;notxn=0;syncpragma=NORMAL;stepapi=0
-
--> MySQL ODBC Driver
-------------------------------------------------------
-- https://dev.mysql.com/downloads/connector/odbc/
-- скачиваем и ставим mysql-connector-odbc-8.0.28-winx64.msi или более новую (если не установнено вместе с базой данных)
-- ODBC прописать при подключении в SSRS
-- Driver={MySQL ODBC 8.0 ANSI Driver};Server=localhost;User=test_user;Password=12345678;Option=3;
 
 -> PostgreSQL ODBC Driver
 ------------------------------------------------------
 - https://www.postgresql.org/ftp/odbc/versions/msi/
 - скачиваем и ставим psqlodbc_13_02_0000-x64 или более новую
 - ODBC прописать при подключении в SSRS
-- Driver={PostgreSQL ANSI};Server=localhost;Port=5432;Database=test_database;Uid=test_user;Pwd=12345678;
+- Driver={PostgreSQL ANSI};Server=localhost;Port=5432;Database=testdb;Uid=testdb;Pwd=!Aa112233;
 
--> Oracle OLE DB Driver
+-> MySQL ODBC Driver
 ------------------------------------------------------
-- https://www.oracle.com/database/technologies/oracle21c-windows-downloads.html
-- скачиваем и ставим Oracle клиента - NT_213000_client_x64.zip или более новый
-- после установки меняем в глоб. реестре:
-  - Компьютер\HKEY_LOCAL_MACHINE\SOFTWARE\ORACLE\KEY_OraClient21Home1 c AMERICAN_AMERICA.WE8MSWIN1252
-    на NLS_LANG = AMERICAN_AMERICA.AL32UTF8 (либо AMERICAN_AMERICA.CL8MSWIN1251)
-  - настраиваем tnsnames.ora для настройки x64 Oracle Client:
-    XE = (DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)))(CONNECT_DATA =(SERVICE_NAME = XE)))
-- настраиваем OLE DB подключение в SSRS
+- https://dev.mysql.com/downloads/connector/odbc/
+- скачиваем и ставим mysql-connector-odbc-8.0.28-winx64.msi или более новую (если не установнено вместе с базой данных)
+- ODBC прописать при подключении в SSRS
+- Driver={MySQL ODBC 8.0 ANSI Driver};Server=localhost;User=test_user;Password=!Aa112233;Option=3;
+
+-> MariaDB ODBC Driver
+------------------------------------------------------
+- https://mariadb.com/downloads/connectors/connectors-data-access/odbc-connector
+- скачиваем и ставим mariadb-connector-odbc-3.1.17-win64.msi или более новую (если не установнено вместе с базой данных)
+- ODBC прописать при подключении в SSRS
+- DRIVER={MariaDB ODBC 3.1 Driver}; SERVER=localhost; PORT=3307; UID=root; PASSWORD=!Aa112233;OPTION=3;
+
+-> Oracle Driver
+------------------------------------------------------
+  *** ODBC
+  - инструкция - https://www.oracle.com/cis/database/technologies/releasenote-odbc-ic.html
+  - https://www.oracle.com/database/technologies/instant-client/winx64-64-downloads.html
+
+  - скачиваем Oracle Instant Client Basic Package - instantclient-basic-windows.x64-21.7.0.0.0dbru.zip
+  - распаковываем с папку c:\oracle\product, если их нет создаем
+  - добавляем в Переменные среды -> Cистемные переменные -> Path = c:\oracle\product\instantclient_21_7\
+  - скачиваем SQL*Plus Package - instantclient-sqlplus-windows.x64-21.7.0.0.0dbru.zip
+  - распаковываем с папку c:\oracle\product\
+  - копируем файлы tnsnames.ora и sqlnet.ora в папку c:\oracle\product\instantclient_21_7\network\admin\
+  - проверяем:
+    - sqlplus /nolog
+    - connect TEST_USER/!Aa112233@XE
+    - exit
+  - скачиваем ODBC Package - instantclient-odbc-windows.x64-21.7.0.0.0dbru.zip
+  - распаковываем с папку c:\oracle\product\
+  - запускаем cmd под администратором
+    - cd c:\oracle\product\instantclient_21_7\
+    - odbc_install
+  - запускаем -> Источники данных ODBC (64-разрядная версия)
+  - проверяем -> Драйверы, должен появится -> Oracle in instantclient_21_7
+  - выбираем -> Системный DSN -> Добавить:
+    - Data Source Name: Oracle_x64
+    - Description: Oracle_x64
+    - TNS Service Name: XE
+    - User ID: TEST_USER
+    - OK
+  - настраиваем ODBC подключение в SSRS
+  - поставщик ODBC: System data source name = Oracle_x64
+  - логин = TEST_USER и пароль = !Aa112233.
+
+  *** OLE DB (альтернатива)
+  - https://www.oracle.com/database/technologies/oracle21c-windows-downloads.html
+  - скачиваем и ставим Oracle клиента - NT_213000_client_x64.zip или более новый
+  - перегружаем ПК
+  - копируем tnsnames.ora и sqlnet.ora в папку c:\app\client\Admin\product\21.0.0\client_1\network\admin\
+  - после установки меняем в глоб. реестре:
+    - Компьютер\HKEY_LOCAL_MACHINE\SOFTWARE\ORACLE\KEY_OraClient21Home1 c AMERICAN_AMERICA.WE8MSWIN1252
+      на NLS_LANG = AMERICAN_AMERICA.AL32UTF8 (либо AMERICAN_AMERICA.CL8MSWIN1251)
+  - настраиваем OLE DB подключение в SSRS
   - поставщик OLE DB: Oracle provider for OLE DB
-  - имя базы = XE, логин = TEST_USER и пароль = TEST_USER.
+  - имя базы = XE, логин = TEST_USER и пароль = !Aa112233.
 
--> IBM DB2 OLE DB Driver
+-> IBM DB2 Driver
 ------------------------------------------------------
-- OLE DB устанавливается вместе с базой данных
+- *** OLE DB устанавливается вместе с базой данных (если локальная база данных)
 - настраиваем OLE DB подключение в SSRS
   - поставщик OLE DB: Provider=IBMOLEDB.DB2COPY1;Data Source=SAMPLE;Location=localhost:25000
   - логин = db2admin и пароль = 12345678.
 
+- *** ODBC (если база данных находится на отдельном сервере)
+- настраиваем ODBC подключение в SSRS
+  - https://www.ibm.com/support/pages/node/6830623 поиск IBM Data Server Driver for ODBC and CLI (64-bit) -> Download
+    - IBM Data Server Driver for ODBC and CLI (Windows/x86-64 64 bit) V11.5.8 Fix Pack 0
+  - скачать IBM Data Server Driver for ODBC and CLI (64-bit) -> v11.5.8_ntx64_odbc_cli.zip
+  - распаковать содержимое в c:\Program Files\IBM\ предварително создав папку IBM
+  - добавляем в Переменные среды -> Cистемные переменные -> Path = c:\Program Files\IBM\clidriver\bin
+  - запускаем под администатором: cmd db2oreg1 –i
+  - запускаем под администатором: cmd db2oreg1 –setup
+  - запускаем -> Источники данных ODBC (64-разрядная версия)
+  - проверяем -> Драйверы, должен появится -> IBM DATA SERVER DRIVER for ODBC.....
+  - выбираем -> Системный DSN -> Добавить:
+    - Data Source Name: ibmdb2_odbc
+    - Description: ibmdb2_odbc
+    - Database alias: -> Add
+      - Data Source:
+        - User ID: DB2INST1
+        - Password: !Aa112233
+        - check Save password
+      - TCP/IP:
+        - Database name: sample
+        - Host name: localhost
+        - Port: 50000
+      - OK
+  - настраиваем ODBC подключение в SSRS
+  - поставщик ODBC: System data source name = ibmdb2_odbc
+  - логин = DB2INST1 и пароль = !Aa112233.
+
 -> IBM Informix ODBC Driver
 ------------------------------------------------------
 - Скачиваем и устанавливаем IBM Informix Client SDKV 4.50 (ibm.csdk.4.50.FC8.WIN.zip)
-- Windows -> Источники данных ODBC (64 разрадная версия) -> Системный DSN
-  - General:
-    - Data Source Name - informix_odbc
-    - Description - informix_odbc
-  - Connection:
-    - Server Name - informix_test
-    - Host Name - localhost
-    - Service - turbo_test
-    - Database Name - sample
-    - User Id - informix
-    - Password - 12345678
+  - Если база данных не локальная необходимо настроить SSL подключение:
+    - включить при установке - Use OPENSSL instead of GSKit?
+    - Windows -> Источники данных ODBC (64 разрадная версия) -> Системный DSN
+      - General:
+        - Data Source Name - informix_odbc
+        - Description - informix_odbc
+      - Connection:
+        - Server Name - informix_test
+        - Host Name - localhost
+        - Service - turbo_test
+        - Database Name - sample
+        - User Id - informix
+        - Password - !Aa112233
 
 -> Firebird ODBC Driver
 ------------------------------------------------------
 - Скачиваем и устанавливаем Firebird_ODBC_2.0.5.156_x64.exe
+- Скачиваем и устанавливаем Firebird-4.0.2.2816-0-x64.exe (!!! Выборочная установка -> Компоненты сервера (выключить))
+- настраиваем ODBC подключение в SSRS
+  - поставщик ODBC: DRIVER=Firebird/InterBase(r) driver;UID=SYSDBA;PWD=!Aa112233;DBNAME=localhost/3050://firebird/data/testdb.fdb
+
+

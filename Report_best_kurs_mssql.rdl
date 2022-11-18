@@ -7,10 +7,9 @@
     <DataSource Name="DataSource_MSSQL">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=localhost;Initial Catalog=DatabaseTestDB</ConnectString>
-        <IntegratedSecurity>true</IntegratedSecurity>
+        <ConnectString>Data Source=localhost;Initial Catalog=DatabaseTestDBDocker</ConnectString>
       </ConnectionProperties>
-      <rd:SecurityType>Integrated</rd:SecurityType>
+      <rd:SecurityType>DataBase</rd:SecurityType>
       <rd:DataSourceID>fdb41995-2656-4514-a207-eafc62f1ef7a</rd:DataSourceID>
     </DataSource>
   </DataSources>

@@ -5,8 +5,8 @@
   <DataSources>
     <DataSource Name="DataSourceIBMDB2">
       <ConnectionProperties>
-        <DataProvider>OLEDB</DataProvider>
-        <ConnectString>Provider=IBMOLEDB.DB2COPY1;Data Source=SAMPLE;Location=localhost:25000;uid=db2admin;pwd=12345678</ConnectString>
+        <DataProvider>ODBC</DataProvider>
+        <ConnectString>Dsn=ibmdb2_odbc</ConnectString>
       </ConnectionProperties>
       <rd:SecurityType>DataBase</rd:SecurityType>
       <rd:DataSourceID>b2e5e70e-e63c-41bf-b76b-8d75a7a661e2</rd:DataSourceID>
@@ -34,9 +34,17 @@ ORDER BY 1</CommandText>
           <DataField>RATE</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
+        <Field Name="RATE_STR">
+          <DataField>RATE_STR</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="AVG_RATE">
           <DataField>AVG_RATE</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="AVG_RATE_STR">
+          <DataField>AVG_RATE_STR</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
@@ -369,15 +377,17 @@ ORDER BY 1</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="RATE">
+                        <Textbox Name="RATE_STR">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!RATE.Value</Value>
-                                  <Style />
+                                  <Value>=Fields!RATE_STR.Value</Value>
+                                  <Style>
+                                    <Format>0.00;(0.00)</Format>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -385,31 +395,11 @@ ORDER BY 1</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>RATE</rd:DefaultName>
+                          <rd:DefaultName>RATE_STR</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -420,14 +410,14 @@ ORDER BY 1</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="AVG_RATE">
+                        <Textbox Name="AVG_RATE_STR">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!AVG_RATE.Value</Value>
+                                  <Value>=Fields!AVG_RATE_STR.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <Format>0.0000;(0.0000)</Format>
@@ -439,7 +429,7 @@ ORDER BY 1</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>AVG_RATE</rd:DefaultName>
+                          <rd:DefaultName>AVG_RATE_STR</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -450,6 +440,7 @@ ORDER BY 1</CommandText>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>

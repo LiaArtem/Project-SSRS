@@ -1,41 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
-  <Description>Лучшие курсы (PostgreSQL)</Description>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="DataSource_PostgreSQL">
+    <DataSource Name="DataSource_MariaDB">
       <ConnectionProperties>
         <DataProvider>ODBC</DataProvider>
-        <ConnectString>Driver=PostgreSQL ANSI;server=localhost;port=5432;database=testdb;Uid=testdb;Pwd=!Aa112233;</ConnectString>
-        <IntegratedSecurity>true</IntegratedSecurity>
+        <ConnectString>DRIVER={MariaDB ODBC 3.1 Driver}; SERVER=localhost; PORT=3307; UID=root; PASSWORD=!Aa112233;OPTION=3;</ConnectString>
       </ConnectionProperties>
-      <rd:SecurityType>Integrated</rd:SecurityType>
-      <rd:DataSourceID>ef8f5362-9cfd-4d0a-a184-c265fbe0dd2e</rd:DataSourceID>
+      <rd:SecurityType>DataBase</rd:SecurityType>
+      <rd:DataSourceID>0e4b54df-16b3-4e80-a3af-722db6725a57</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSet_kurs">
       <Query>
-        <DataSourceName>DataSource_PostgreSQL</DataSourceName>
-        <CommandText>select *
-from test_schemas.view_kurs_report</CommandText>
+        <DataSourceName>DataSource_MariaDB</DataSourceName>
+        <CommandText>SELECT *
+FROM test_schemas.CURS_REPORT;</CommandText>
       </Query>
       <Fields>
-        <Field Name="curs_date">
-          <DataField>curs_date</DataField>
+        <Field Name="CURS_DATE">
+          <DataField>CURS_DATE</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="curr_code">
-          <DataField>curr_code</DataField>
+        <Field Name="CURR_CODE">
+          <DataField>CURR_CODE</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="rate">
-          <DataField>rate</DataField>
+        <Field Name="RATE">
+          <DataField>RATE</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="avg_rate">
-          <DataField>avg_rate</DataField>
+        <Field Name="AVG_RATE">
+          <DataField>AVG_RATE</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
       </Fields>
@@ -58,7 +56,7 @@ from test_schemas.view_kurs_report</CommandText>
                   <Width>3.14382cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5.675cm</Width>
+                  <Width>3.69063cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -285,14 +283,14 @@ from test_schemas.view_kurs_report</CommandText>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="curs_date">
+                        <Textbox Name="CURS_DATE">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!curs_date.Value</Value>
+                                  <Value>=DateValue(Fields!CURS_DATE.Value)</Value>
                                   <Style>
                                     <Format>d</Format>
                                   </Style>
@@ -303,7 +301,7 @@ from test_schemas.view_kurs_report</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>curs_date</rd:DefaultName>
+                          <rd:DefaultName>CURS_DATE</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -318,14 +316,14 @@ from test_schemas.view_kurs_report</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="curr_code">
+                        <Textbox Name="CURR_CODE">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!curr_code.Value</Value>
+                                  <Value>=Fields!CURR_CODE.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -334,7 +332,7 @@ from test_schemas.view_kurs_report</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>curr_code</rd:DefaultName>
+                          <rd:DefaultName>CURR_CODE</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -369,14 +367,14 @@ from test_schemas.view_kurs_report</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="rate">
+                        <Textbox Name="RATE">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!rate.Value</Value>
+                                  <Value>=Fields!RATE.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -385,7 +383,7 @@ from test_schemas.view_kurs_report</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>rate</rd:DefaultName>
+                          <rd:DefaultName>RATE</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -420,14 +418,14 @@ from test_schemas.view_kurs_report</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="avg_rate">
+                        <Textbox Name="AVG_RATE">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!avg_rate.Value</Value>
+                                  <Value>=Fields!AVG_RATE.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <Format>0.0000;(0.0000)</Format>
@@ -439,7 +437,7 @@ from test_schemas.view_kurs_report</CommandText>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>avg_rate</rd:DefaultName>
+                          <rd:DefaultName>AVG_RATE</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
@@ -475,10 +473,10 @@ from test_schemas.view_kurs_report</CommandText>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet_kurs</DataSetName>
-            <Top>0.3525cm</Top>
-            <Left>2.09083cm</Left>
+            <Top>0.39219cm</Top>
+            <Left>1.8527cm</Left>
             <Height>1.2cm</Height>
-            <Width>17.4348cm</Width>
+            <Width>15.45043cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -486,13 +484,13 @@ from test_schemas.view_kurs_report</CommandText>
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>0.96875in</Height>
+        <Height>1.19792in</Height>
         <Style />
       </Body>
-      <Width>8.14583in</Width>
+      <Width>7.95833in</Width>
       <Page>
         <PageHeader>
-          <Height>6.19125cm</Height>
+          <Height>6.00604cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -500,8 +498,8 @@ from test_schemas.view_kurs_report</CommandText>
               <Source>Embedded</Source>
               <Value>logo</Value>
               <Sizing>FitProportional</Sizing>
-              <Top>1.01265cm</Top>
-              <Left>16.65892cm</Left>
+              <Top>0.52317cm</Top>
+              <Left>16.42079cm</Left>
               <Height>4.9597cm</Height>
               <Width>3.59021cm</Width>
               <Style>
@@ -517,7 +515,7 @@ from test_schemas.view_kurs_report</CommandText>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Курсы PostgreSQL</Value>
+                      <Value>Курсы MariaDB</Value>
                       <Style>
                         <FontSize>36pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -529,10 +527,10 @@ from test_schemas.view_kurs_report</CommandText>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>1.01265cm</Top>
-              <Left>0.44129cm</Left>
+              <Top>0.52317cm</Top>
+              <Left>0.20316cm</Left>
               <Height>2.21396cm</Height>
-              <Width>15.93541cm</Width>
+              <Width>15.57042cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -565,8 +563,8 @@ from test_schemas.view_kurs_report</CommandText>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>4.73735cm</Top>
-              <Left>3.63732cm</Left>
+              <Top>4.24787cm</Top>
+              <Left>3.50502cm</Left>
               <Height>1.235cm</Height>
               <Width>12.73938cm</Width>
               <ZIndex>2</ZIndex>
@@ -673,5 +671,5 @@ tIzZmle3uxpe7bRtzbeazi+W3Uz6b9q2e7VlsVNfdW15aX3sWM68tZQdKs6VW6Slln9CN+rqoVqddZ1y
     </EmbeddedImage>
   </EmbeddedImages>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>c1ed104f-7fc9-4ce4-9574-bc58db059394</rd:ReportID>
+  <rd:ReportID>733830e3-bdb4-4cf5-af80-247a241bbb00</rd:ReportID>
 </Report>

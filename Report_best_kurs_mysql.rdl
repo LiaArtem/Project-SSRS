@@ -7,7 +7,7 @@
     <DataSource Name="DataSource_MySQL">
       <ConnectionProperties>
         <DataProvider>ODBC</DataProvider>
-        <ConnectString>Driver=MySQL ODBC 8.0 ANSI Driver;server=localhost;user=test_user;password=12345678;option=3</ConnectString>
+        <ConnectString>Driver=MySQL ODBC 8.0 ANSI Driver;server=localhost;user=test_user;password=!Aa112233;option=3</ConnectString>
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
       <rd:SecurityType>Integrated</rd:SecurityType>
@@ -18,8 +18,8 @@
     <DataSet Name="DataSet_kurs">
       <Query>
         <DataSourceName>DataSource_MySQL</DataSourceName>
-        <CommandText>SELECT * 
-FROM test_schemas.curs_report;</CommandText>
+        <CommandText>SELECT *
+FROM test_schemas.CURS_REPORT;</CommandText>
       </Query>
       <Fields>
         <Field Name="CURS_DATE">
