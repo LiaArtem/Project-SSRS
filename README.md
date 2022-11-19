@@ -127,7 +127,7 @@ but the unattended execution account is not specified. (rsInvalidDataSourceCrede
   - скачиваем SQL*Plus Package - instantclient-sqlplus-windows.x64-21.7.0.0.0dbru.zip
   - распаковываем с папку c:\oracle\product\
   - копируем файлы tnsnames.ora и sqlnet.ora в папку c:\oracle\product\instantclient_21_7\network\admin\
-  - проверяем:
+  - проверяем cmd:
     - sqlplus /nolog
     - connect TEST_USER/!Aa112233@XE
     - exit
@@ -165,7 +165,7 @@ but the unattended execution account is not specified. (rsInvalidDataSourceCrede
 - *** OLE DB устанавливается вместе с базой данных (если локальная база данных)
 - настраиваем OLE DB подключение в SSRS
   - поставщик OLE DB: Provider=IBMOLEDB.DB2COPY1;Data Source=SAMPLE;Location=localhost:25000
-  - логин = db2admin и пароль = 12345678.
+  - логин = db2admin и пароль = !Aa112233.
 
 - *** ODBC (если база данных находится на отдельном сервере)
 - настраиваем ODBC подключение в SSRS
