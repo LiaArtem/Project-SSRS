@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
+<Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily" xmlns:am="http://schemas.microsoft.com/sqlserver/reporting/authoringmetadata">
   <Description>Лучшие курсы (Oracle)</Description>
+  <am:AuthoringMetadata>
+    <am:CreatedBy>
+      <am:Name>SSDTRS</am:Name>
+      <am:Version>17.8.34525.116</am:Version>
+    </am:CreatedBy>
+    <am:UpdatedBy>
+      <am:Name>SSDTRS</am:Name>
+      <am:Version>17.8.34525.116</am:Version>
+    </am:UpdatedBy>
+    <am:LastModifiedTimestamp>2024-02-05T10:06:08.9215333Z</am:LastModifiedTimestamp>
+  </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="DataSource_Oracle">
       <ConnectionProperties>
         <DataProvider>ODBC</DataProvider>
-        <ConnectString>Dsn=Oracle_x64</ConnectString>
+        <ConnectString>DRIVER={Oracle in instantclient_21_13};DBQ=localhost:1521/FREE;UID=TEST_USER;PWD=!Aa112233;TLO=O;FBS=60000;FWC=F;CSR=F;MDI=T;MTS=F;DPM=F;NUM=NLS;BAM=IfAllSuccessful;BTD=F;RST=T;LOB=T;FDL=0;FRC=0;QTO=T;FEN=F;XSM=Default;EXC=F;APA=T;DBA=W;</ConnectString>
+        <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
-      <rd:SecurityType>DataBase</rd:SecurityType>
+      <rd:SecurityType>Integrated</rd:SecurityType>
       <rd:DataSourceID>f0c525fe-803d-4aeb-88c2-6cdac41eb378</rd:DataSourceID>
     </DataSource>
   </DataSources>

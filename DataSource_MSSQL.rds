@@ -2,7 +2,8 @@
 <RptDataSource xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="DataSource_MSSQL">
   <ConnectionProperties>
     <Extension>SQL</Extension>
-    <ConnectString>Data Source=localhost;Initial Catalog=DatabaseTestDBDocker</ConnectString>
+    <ConnectString>Data Source=localhost;Initial Catalog=DatabaseTestDBDocker;</ConnectString>
+    <Prompt>Введіть логін та пароль (sa - !Aa112233)</Prompt>
   </ConnectionProperties>
   <DataSourceID>419f25db-8d48-4f74-a98c-6c86f0a4439a</DataSourceID>
 </RptDataSource>

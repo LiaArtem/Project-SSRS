@@ -1,6 +1,17 @@
 - Project SSRS VS2022 (Reports with Oracle, MS SQL, Azure SQL, PostgreSQL, MySQL, MariaDB, IBM DB2, IBM Informix, Firebird, SQLite, XML).
 Deployment MS SQL Server 2022 Reporting Services.
 
+1) Встановлюємо SQL Server та інші бази даних з проекту - Docker-Win11
+   https://github.com/LiaArtem/Docker-Win11/
+   https://github.com/LiaArtem/Oracle_23c_Free/
+
+2) Заповнюємо бази данних даними запускаючи проект - CurrencyChartFX-Java-21-Maven
+   https://github.com/LiaArtem/CurrencyChartFX-Java-21-Maven
+   +
+   https://github.com/LiaArtem/ASP_RESTful_Web_API (для Report_Fair_mssql)
+   - POST /api/FairValue за необхідну дату
+   - POST /api/IsinSecur
+
 ----------------------------------------------------------------------------
 Налаштування Microsoft SQL Server 2022 Reporting Services
 ----------------------------------------------------------------------------
@@ -37,9 +48,8 @@ Deployment MS SQL Server 2022 Reporting Services.
        -> OverwriteDatasources = true
      - Пуск проекту Project SSRS. Все автоматично піде на сервер.
 
-4) Базу SQLite перенести - C:\DB_SQLite\CurrencyChartFXMaven.db
-5) Для роботи сервера необхідні ODBC Drivers x64
-6) Перезавантажуємо сервер (ПК)
+4) Для роботи сервера необхідні ODBC Drivers x64
+5) Перезавантажуємо сервер (ПК)
 
 ----------------------------------------------------------------------------
 Налаштування HTTPS у Microsoft SQL Server 2022 Reporting Services
@@ -69,17 +79,8 @@ Deployment MS SQL Server 2022 Reporting Services.
      Додати, вибрати сертифікат - ОК - ОК (https://desktop-kq2l9b1/Reports2022)
 
 ----------------------------------------------------------------------------
-Visual Studio 2022 - налаштування ODBC під час розробки
+Visual Studio 2022 - налаштування ODBC
 ----------------------------------------------------------------------------
-Якщо ви працюєте у Visual Studio і не бачите служб Reporting Services у проектах необхідно
- - додати компонент <Зберігання та обробка даних> -> увімкнути ВСІ або SQL Server Data Tools
-Якщо не з'явився
- - з меню Visual Studio <Розширення> виберіть <Керування розширеннями> інсталювати Microsoft Reporting Services Projects
-
-!!!! Якщо така помилка в DataSource_*** вкладка Облікові дані -> Використовувати ім'я користувача та пароль -> Прописати їх
-The current action cannot be completed. The user data source credentials do not meet the requirements to run this report or shared dataset.
-Either the user data source credentials are not stored in the report server database, or the user data source is configured not to require credentials
-but the unattended execution account is not specified. (rsInvalidDataSourceCredentialSetting)
 
 -> XML read
 ------------------------------------------------------
@@ -88,6 +89,7 @@ but the unattended execution account is not specified. (rsInvalidDataSourceCrede
 
 -> SQLite ODBC Driver
 ------------------------------------------------------
+- Базу SQLite перенести - C:\DB_SQLite\CurrencyChartFXMaven.db
 - http://www.ch-werner.de/sqliteodbc/
 - завантажуємо та ставимо sqliteodbc.exe, sqliteodbc_w64.exe
 - Запускаємо -> Джерела даних ODBC x64 -> Системний DSN -> SQLite Datasource x64 -> Прописати Database Name = C:\DB_SQLite\CurrencyChartFXMaven.db
@@ -97,21 +99,21 @@ but the unattended execution account is not specified. (rsInvalidDataSourceCrede
 -> PostgreSQL ODBC Driver
 ------------------------------------------------------
 - https://www.postgresql.org/ftp/odbc/versions/msi/
-- завантажуємо та ставимо psqlodbc_13_02_0000-x64 або новішу
+- завантажуємо та ставимо psqlodbc_16_00_0000-x64.zip або новішу
 - ODBC прописати при підключенні до SSRS
 - Driver={PostgreSQL ANSI};Server=localhost;Port=5432;Database=testdb;Uid=testdb;Pwd=!Aa112233;
 
 -> MySQL ODBC Driver
 ------------------------------------------------------
 - https://dev.mysql.com/downloads/connector/odbc/
-- завантажуємо та ставимо mysql-connector-odbc-8.0.28-winx64.msi або нову (якщо не встановлено разом із базою даних)
+- завантажуємо та ставимо mysql-connector-odbc-8.3.0-winx64.msi або нову (якщо не встановлено разом із базою даних)
 - ODBC прописати при підключенні до SSRS
-- Driver={MySQL ODBC 8.0 ANSI Driver};Server=localhost;User=test_user;Password=!Aa112233;Option=3;
+- Driver={MySQL ODBC 8.3 ANSI Driver};Server=localhost;User=test_user;Password=!Aa112233;Option=3;
 
 -> MariaDB ODBC Driver
 ------------------------------------------------------
-- https://mariadb.com/downloads/connectors/connectors-data-access/odbc-connector
-- завантажуємо та ставимо mariadb-connector-odbc-3.1.17-win64.msi або новішу (якщо не встановлено разом з базою даних)
+- https://mariadb.com/downloads/connectors/connectors-data-access/odbc-connector/
+- завантажуємо та ставимо mariadb-connector-odbc-3.1.20-win64.msi або новішу (якщо не встановлено разом з базою даних)
 - ODBC прописати при підключенні до SSRS
 - DRIVER={MariaDB ODBC 3.1 Driver}; SERVER=localhost; PORT=3307; UID=root; PASSWORD=!Aa112233;OPTION=3;
 
@@ -121,32 +123,26 @@ but the unattended execution account is not specified. (rsInvalidDataSourceCrede
   - інструкція - https://www.oracle.com/cis/database/technologies/releasenote-odbc-ic.html
   - https://www.oracle.com/database/technologies/instant-client/winx64-64-downloads.html
 
-  - завантажуємо Oracle Instant Client Basic Package - instantclient-basic-windows.x64-21.7.0.0.0dbru.zip
+  - завантажуємо Oracle Instant Client Basic Package - instantclient-basic-windows.x64-21.13.0.0.0dbru.zip
   - Розпаковуємо з папку c:\oracle\product, якщо їх немає
-  - додаємо в Змінні середовища -> Системні змінні -> Path = c:\oracle\product\instantclient_21_7\
-  - завантажуємо SQL*Plus Package - instantclient-sqlplus-windows.x64-21.7.0.0.0dbru.zip
+    - !!!!! запускаємо cmd під адміністратором
+    - cmd -> sysdm.cpl -> Додатково -> Змінні оточення
+    - додаємо в Змінні середовища -> Системні змінні -> Path = c:\oracle\product\instantclient_21_13\
+  - завантажуємо SQL*Plus Package - instantclient-sqlplus-windows.x64-21.13.0.0.0dbru.zip
   - Розпаковуємо з папку c:\oracle\product\
-  - Копіюємо файли tnsnames.ora і sqlnet.ora в папку c:\oracle\product\instantclient_21_7\network\admin\
-  - Перевіряємо cmd:
-    - sqlplus /nolog
-    - connect TEST_USER/!Aa112233@XE
-    - exit
-  - завантажуємо ODBC Package - instantclient-odbc-windows.x64-21.7.0.0.0dbru.zip
+  - Копіюємо файли tnsnames.ora і sqlnet.ora в папку c:\oracle\product\instantclient_21_13\network\admin\
+    - Перевіряємо cmd:
+      - sqlplus /nolog
+      - connect TEST_USER/!Aa112233@FREE
+      - exit
+  - завантажуємо ODBC Package - instantclient-odbc-windows.x64-21.13.0.0.0dbru.zip
   - Розпаковуємо з папку c:\oracle\product\
-  - запускаємо cmd під адміністратором
-    - cd c:\oracle\product\instantclient_21_7\
-    - odbc_install
-  - запускаємо -> Джерела даних ODBC (64-розрядна версія)
-  - перевіряємо -> Драйвери, повинен з'явиться -> Oracle in instantclient_21_7
-  - вибираємо -> Системний DSN -> Додати:
-    - Data Source Name: Oracle_x64
-    - Description: Oracle_x64
-    - TNS Service Name: XE
-    - User ID: TEST_USER
-    - OK
+    - !!!!! запускаємо cmd під адміністратором
+      - cd c:\oracle\product\instantclient_21_13\
+      - odbc_install
   - налаштовуємо ODBC підключення до SSRS
-  - Постачальник ODBC: System data source name = Oracle_x64
-  - логін = TEST_USER та пароль = !Aa112233.
+  - ODBC прописати при підключенні до SSRS
+  - DRIVER={Oracle in instantclient_21_13};DBQ=localhost:1521/FREE;UID=TEST_USER;PWD=!Aa112233;TLO=O;FBS=60000;FWC=F;CSR=F;MDI=T;MTS=F;DPM=F;NUM=NLS;BAM=IfAllSuccessful;BTD=F;RST=T;LOB=T;FDL=0;FRC=0;QTO=T;FEN=F;XSM=Default;EXC=F;APA=T;DBA=W;
 
   *** OLE DB (альтернатива)
   - https://www.oracle.com/database/technologies/oracle21c-windows-downloads.html
@@ -170,12 +166,15 @@ but the unattended execution account is not specified. (rsInvalidDataSourceCrede
 - *** ODBC (якщо база даних знаходиться на окремому сервері)
 - налаштовуємо ODBC підключення до SSRS
   - https://www.ibm.com/support/pages/node/6830623 пошук IBM Data Server Driver for ODBC and CLI (64-bit) -> Download
-    - IBM Data Server Driver for ODBC and CLI (Windows/x86-64 64-bit) V11.5.8 Fix Pack 0
-  - скачати IBM Data Server Driver for ODBC and CLI (64-bit) -> v11.5.8_ntx64_odbc_cli.zip
+    - IBM Data Server Driver for ODBC and CLI (Windows/x86-64 64-bit) V11.5.9 Fix Pack 0
+  - скачати IBM Data Server Driver for ODBC and CLI (64-bit) -> v11.5.9_ntx64_odbc_cli.zip
   - розпакувати вміст у c:\Program Files\IBM\ попередньо створивши папку IBM
-  - додаємо в Змінні середовища -> Системні змінні -> Path = c:\Program Files\IBM\clidriver\bin
-  - запускаємо під адміністатором: cmd db2oreg1 -i
-  - запускаємо під адміністатором: cmd db2oreg1 -setup
+    - !!!!! запускаємо cmd під адміністратором
+    - cmd -> sysdm.cpl -> Додатково -> Змінні оточення
+    - додаємо в Змінні середовища -> Системні змінні -> Path = c:\Program Files\IBM\clidriver\bin
+    - cmd -> cd c:\Program Files\IBM\clidriver\bin
+    - запускаємо під адміністатором: cmd -> db2oreg1 -i
+    - запускаємо під адміністатором: cmd -> db2oreg1 -setup
   - запускаємо -> Джерела даних ODBC (64-розрядна версія)
   - перевіряємо -> Драйвери, повинен з'явиться -> IBM DATA SERVER DRIVER for ODBC.
   - вибираємо -> Системний DSN -> Додати:
@@ -195,7 +194,7 @@ but the unattended execution account is not specified. (rsInvalidDataSourceCrede
   - постачальник ODBC: System data source name = ibmdb2_odbc
   - логін = DB2INST1 та пароль = !Aa112233.
 
--> IBM Informix ODBC Driver
+-> IBM Informix ODBC Driver (працює тільки з локальною базою даних)
 ------------------------------------------------------
 - Завантажуємо та встановлюємо IBM Informix Client SDKV 4.50 (ibm.csdk.4.50.FC8.WIN.zip)
   - Якщо база даних не локальна, необхідно налаштувати SSL підключення:
@@ -215,7 +214,7 @@ but the unattended execution account is not specified. (rsInvalidDataSourceCrede
 -> Firebird ODBC Driver
 ------------------------------------------------------
 - Завантажуємо та встановлюємо Firebird_ODBC_2.0.5.156_x64.exe
-- Завантажуємо та встановлюємо Firebird-4.0.2.2816-0-x64.exe (!!! Вибіркова установка -> Компоненти сервера (вимкнути))
+- Завантажуємо та встановлюємо Firebird-5.0.0.1306-0-windows-x64.exe (!!! Вибіркова установка -> Компоненти сервера (вимкнути))
 - налаштовуємо ODBC підключення до SSRS
   - постачальник ODBC: DRIVER=Firebird/InterBase(r) driver;UID=SYSDBA;PWD=!Aa112233;DBNAME=localhost/3050://firebird/data/testdb.fdb
 
