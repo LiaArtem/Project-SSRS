@@ -6,7 +6,7 @@ Deployment MS SQL Server 2022 Reporting Services.
    https://github.com/LiaArtem/Oracle_23c_Free/
 
 2) Заповнюємо бази данних даними запускаючи проект - CurrencyChartFX-Java-21-Maven
-   https://github.com/LiaArtem/CurrencyChartFX-Java-21-Maven
+   https://github.com/LiaArtem/CurrencyChartFX-Java-21-Maven (налаштуванная у файлі - Settings (SSRS).json)
    +
    https://github.com/LiaArtem/ASP_RESTful_Web_API (для Report_Fair_mssql)
    - POST /api/FairValue за необхідну дату
@@ -91,7 +91,7 @@ Visual Studio 2022 - налаштування ODBC
 ------------------------------------------------------
 - Базу SQLite перенести - C:\DB_SQLite\CurrencyChartFXMaven.db
 - http://www.ch-werner.de/sqliteodbc/
-- завантажуємо та ставимо sqliteodbc.exe, sqliteodbc_w64.exe
+- завантажуємо та ставимо sqliteodbc_w64.exe
 - Запускаємо -> Джерела даних ODBC x64 -> Системний DSN -> SQLite Datasource x64 -> Прописати Database Name = C:\DB_SQLite\CurrencyChartFXMaven.db
 - ODBC прописати при підключенні до SSRS
 - Driver={SQLite3 ODBC Driver};database=C:\\DB_SQLite\\CurrencyChartFXMaven.db;longnames=0;timeout=1000;notxn=0;syncpragma=NORMAL;stepapi=0
